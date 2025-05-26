@@ -137,7 +137,7 @@ The final static site will be in the `dist` folder.
 **Date**: May 26, 2025
 **Contact**: [abressiddique@gmail.com](mailto:abressiddique@gmail.com)
 
-**Instructions**: Zip the folder `benefit-illustration-frontend` and submit it along with the backend project folder.
+
 
 ---
 
