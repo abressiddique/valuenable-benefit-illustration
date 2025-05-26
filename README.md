@@ -218,10 +218,10 @@ npm test
 ### Register Page
 ![Screenshot 2025-05-26 165647](https://github.com/user-attachments/assets/5e0d2f37-12c3-4514-a2fe-4cb19533180d)
 
-### Calculate Policy Page
+###  Policy Calculation page
 ![Screenshot 2025-05-26 165703](https://github.com/user-attachments/assets/e7ce85d7-a268-4d6f-98a9-4379411eaf76)
 
-### 📊 Policy Illustration
+### 📊 Illustration Page
 ![Screenshot 2025-05-26 165749](https://github.com/user-attachments/assets/468635eb-fe55-4a70-932a-ccaca4c665b2)
 ![Screenshot 2025-05-26 165755](https://github.com/user-attachments/assets/b776a9cc-2f1a-426f-a9ed-c573ac87c9ff)
 ![Screenshot 2025-05-26 165804](https://github.com/user-attachments/assets/937b8367-c392-40cb-b6b3-61c21da12fac)
