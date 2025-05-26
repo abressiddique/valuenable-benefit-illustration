@@ -1,23 +1,20 @@
-
-
-
 # 🧮 Benefit Illustration Module
 
-Welcome to the **Benefit Illustration Module**, a full-stack application built for **ValuEnable** to calculate and visualize insurance policy benefits. This project delivers a secure, scalable backend and a clean, responsive frontend, showcasing robust functionality and a professional UI. Designed to meet all assignment requirements, it’s ready to impress! 🚀
+Welcome to the **Benefit Illustration Module**, a full-stack application developed for **ValuEnable** to calculate and visualize insurance policy benefits. This project delivers a secure, scalable backend and a modern, responsive frontend, designed to meet all assignment requirements with a professional and user-friendly interface. 🚀
 
 ---
 
 ## 🎯 Project Overview
 
-This application allows users to:
-- **Register and log in** securely with JWT authentication.
+The application enables users to:
+- **Register and log in** securely using JWT authentication.
 - **Calculate policy benefits** with validated inputs (e.g., `sumAssured` ≥ ₹5,000,000).
-- **View detailed policy illustrations** with year-wise benefit projections in a dynamic table.
-- **Enjoy a responsive, user-friendly UI** powered by Bootstrap and custom CSS.
+- **View detailed policy illustrations** with year-wise benefit projections in a dynamic, responsive table.
+- **Experience a seamless UI** optimized for all devices using Bootstrap and custom CSS.
 
-The project consists of two components:
+The project is divided into two components:
 - **Backend**: Node.js/Express with MongoDB for secure REST APIs.
-- **Frontend**: React with Vite for a modern, interactive interface.
+- **Frontend**: React with Vite for a fast, interactive interface.
 
 ---
 
@@ -34,7 +31,8 @@ The project consists of two components:
 ### Frontend
 - **Framework**: React
 - **Build Tool**: Vite
-- **Styling**: Bootstrap (via CDN), CSS
+- **Styling**: Bootstrap (via CDN), Custom CSS
+- **State Management**: React Context API, `useState`
 - **HTTP Client**: Axios
 - **Routing**: React Router DOM
 
@@ -45,45 +43,49 @@ The project consists of two components:
 ### Backend
 - **🔐 Secure Authentication**:
   - JWT-based login and protected routes.
-  - Masked sensitive data (DOB, mobile) in MongoDB.
+  - Sensitive data (DOB, mobile) masked in MongoDB (e.g., `****/12/12`, `******7890`).
 - **📊 Policy Calculation**:
   - Validates inputs (e.g., `sumAssured` ≥ ₹5,000,000, policy term > premium term).
   - Generates year-wise benefit projections.
-- **📖 Data Masking**: Masks DOB and mobile for privacy (e.g., `****/12/12`, `******7890`).
 - **🛡️ Robust Error Handling**: Clear error messages for invalid inputs or unauthorized access.
-- **🧪 Unit Testing**: Comprehensive tests for validation, calculation, and APIs.
+- **🧪 Unit Testing**: Comprehensive tests for validation, calculation, and API endpoints.
+- **🚀 Scalability**:
+  - MongoDB sharding and indexing for large datasets.
+  - Async processing and load balancing for performance.
+  - Redis caching for frequent queries.
 
 ### Frontend
 - **📈 Dynamic Illustration**:
   - Displays policy details and benefits in a responsive Bootstrap table.
+  - Fetches benefits by `policyId` using a pre-configured Axios instance.
 - **🎨 Responsive UI**:
-  - Bootstrap for cross-device compatibility.
-  - Custom CSS for clean, professional styling.
-- **🚦 Error Handling**: User-friendly feedback for invalid inputs and unauthorized access.
-
-### Shared
-- **🚀 Scalability**:
-  - MongoDB sharding and indexing for large datasets.
-  - Async processing and load balancing for backend performance.
-  - Redis caching for frequent queries.
+  - Bootstrap ensures cross-device compatibility.
+  - Custom CSS for a clean, professional look.
+- **🔐 Authentication Flow**:
+  - JWT token stored in `localStorage`.
+  - Axios interceptor automatically attaches `Authorization: Bearer <token>` to protected API calls.
+- **🚦 Error Handling**: User-friendly feedback for invalid inputs or unauthorized access.
+- **✅ Form Validation**: Real-time feedback for user inputs (e.g., `sumAssured` < ₹5,000,000).
+- **🌐 Centralized API Configuration**:
+  - Axios instance with `baseURL: http://localhost:5000/api` for streamlined API calls.
 
 ---
 
 ## 📦 Backend API Endpoints
 
-The backend exposes the following REST APIs, all prefixed with `/api`:
+The backend exposes REST APIs prefixed with `/api`:
 
 | Method | Endpoint                          | Description                                                  | Request Body Example                                                                 | Response Example                                                                 |
 |--------|-----------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | POST   | `/api/auth/register`              | Registers a user with masked DOB and mobile.                 | ```json<br>{ "username": "testuser2", "password": "password123", "dob": "1999/12/12", "mobile": "1234567890" }<br>``` | ```json<br>{ "message": "User registered successfully" }<br>```                |
 | POST   | `/api/auth/login`                 | Authenticates user and returns a JWT token.                   | ```json<br>{ "username": "testuser2", "password": "password123" }<br>```            | ```json<br>{ "token": "eyJhbGciOiJIUzI1NiIs..." }<br>```                      |
 | POST   | `/api/policy/calculate`           | Calculates policy benefits with input validations.           | ```json<br>{ "dob": "1999/12/31", "gender": "M", "sumAssured": 5000000, "modalPremium": 40000, "premiumFrequency": "Yearly", "policyTerm": 18, "premiumPaymentTerm": 10 }<br>``` | ```json<br>{ "policy": { "_id": "68343fa5854f73f9d384d66b2", ... } }<br>``` |
-| GET    | `/api/policy/illustration/:id`    | Retrieves policy details and benefits for the authenticated user. | N/A (URL param: `id`, e.g., `68343fa5854f73f9d38466b2`) | ```json<br>{ "_id": "68343fa5854f73f9d384d66b2", "dob": "1999/12/31", "benefits": [{ "year": 1, "projectedBenefit": 5042000 }, ...] }<br>``` |
+| GET    | `/api/policy/illustration/:id`    | Retrieves policy details and benefits for authenticated user. | N/A (URL param: `id`, e.g., `68343fa5854f73f9d38466b2`) | ```json<br>{ "_id": "68343fa5854f73f9d384d66b2", "dob": "1999/12/31", "benefits": [{ "year": 1, "projectedBenefit": 5042000 }, ...] }<br>``` |
 
 ### API Notes:
 - **Authentication**: `/api/policy/*` endpoints require a JWT token in the `Authorization` header (`Bearer <token>`).
 - **Error Responses**: Invalid requests return status codes (e.g., 400, 401, 403, 404) with JSON messages (e.g., `{"message": "Sum Assured must be at least ₹5000000"}`).
-- **Data Masking**: DOB and mobile are masked in MongoDB for security.
+- **Data Masking**: DOB and mobile are masked in MongoDB for privacy.
 
 ---
 
@@ -149,6 +151,13 @@ npm run dev
 - **Calculate Policy**: Input details at `http://localhost:5173/policy`.
 - **View Illustration**: See benefits at `http://localhost:5173/illustration/:policyId`.
 
+### 5. Build Frontend for Production
+```bash
+cd benefit-illustration-frontend
+npm run build
+```
+- Static site generated in the `dist` folder.
+
 ---
 
 ## 🧪 Testing
@@ -161,10 +170,10 @@ npm test
 - Tests validation, benefit calculation, and API endpoints (success, failure, edge cases).
 
 ### Frontend
-- Manual testing via UI:
+- **Manual Testing**:
   - Verify `sumAssured` errors (e.g., < ₹5,000,000).
   - Test invalid tokens or policy IDs.
-- Automated tests can be added with Jest/React Testing Library (optional).
+- **Automated Testing**: Can be added with Jest/React Testing Library (optional).
 
 ---
 
@@ -172,8 +181,10 @@ npm test
 
 - **Fixed `jwt is not defined`**: Corrected `jsonwebtoken` import for robust authentication.
 - **Implemented `sumAssured` Validation**: Ensured `sumAssured` ≥ ₹5,000,000 with clear error messages.
-- **Optimized Performance**: Used MongoDB `.lean()` and indexing for faster queries.
-- **Responsive UI**: Leveraged Bootstrap for a professional, device-friendly interface.
+- **Optimized Performance**:
+  - Backend: MongoDB `.lean()` and indexing for faster queries.
+  - Frontend: Lazy loading and optimized API requests with Axios interceptors.
+- **Responsive UI**: Bootstrap and custom CSS for a professional, device-friendly interface.
 - **Comprehensive Testing**: Backend unit tests for all core logic and endpoints.
 
 ---
@@ -220,7 +231,6 @@ npm test
 - **Date**: May 26, 2025
 - **Contact**: [abressiddique@gmail.com](mailto:abressiddique@gmail.com)
 
-
 ---
 
 ## 📄 License
@@ -230,4 +240,3 @@ This project is for evaluation purposes only and not intended for production use
 ---
 
 Thank you for reviewing my submission! I’m excited to showcase my full-stack skills and contribute to ValuEnable’s mission. Reach out at [abressiddique@gmail.com](mailto:abressiddique@gmail.com) with any feedback! 😊
-```
