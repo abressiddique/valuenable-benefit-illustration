@@ -113,7 +113,7 @@ Each folder includes a `README.md` with detailed setup and features.
 
 ### 1. Clone the Repository
 ```bash
-git clone <repository-url>
+[git clone <repository-url>](https://github.com/abressiddique/valuenable-benefit-illustration.git)
 cd benefit-illustration
 ```
 
