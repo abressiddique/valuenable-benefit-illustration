@@ -1,7 +1,7 @@
 
 # 🧮 Benefit Illustration Module
 
-Thank you for considering me for this opportunity at ValuEnable! I’m excited to present this assignment, which I’ve developed to showcase my skills in building a robust and user-friendly application tailored to ValuEnable’s needs.
+Thank you for considering me for this opportunity at ValuEnable. I have completed the assignment, and you can find all the relevant information in this README.
 
 ---
 
