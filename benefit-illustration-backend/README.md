@@ -136,8 +136,3 @@ npm test
 ## 📄 License
 
 This project is for evaluation purposes only and not intended for production use.
-
-```
-
-You can now copy this entire block and save it as your `README.md`. Let me know if you'd like me to generate the same for the frontend too.
-```
