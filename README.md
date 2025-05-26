@@ -1,10 +1,6 @@
 
 
----
 
-### **Revised Root README (Plain Markdown)**
-
-```markdown
 # 🧮 Benefit Illustration Module
 
 Welcome to the **Benefit Illustration Module**, a full-stack application built for **ValuEnable** to calculate and visualize insurance policy benefits. This project delivers a secure, scalable backend and a clean, responsive frontend, showcasing robust functionality and a professional UI. Designed to meet all assignment requirements, it’s ready to impress! 🚀
