@@ -105,19 +105,7 @@ export default api;
 
 ## 🌄 Screenshots
 
-> *Add relevant screenshots here (e.g., login, calculation form, benefit table/chart, etc.)*
 
-Example:
-
-```md
-### 🔐 Login Page
-![Login Screenshot](screenshots/login.png)
-
-### 📊 Illustration Result
-![Illustration Screenshot](screenshots/illustration.png)
-```
-
-Place images in a `/screenshots` folder in the root of your project.
 
 ---
 
